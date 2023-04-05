@@ -418,7 +418,7 @@ b200_impl::b200_impl(
         _revision = boost::lexical_cast<size_t>(mb_eeprom["revision"]);
     }
 
-    UHD_LOGGER_INFO("B200") << "Detected Device: " << B2XX_STR_NAMES[_product];
+    UHD_LOGGER_INFO("B200") << "Detected Device hello8: " << B2XX_STR_NAMES[_product];
 
     _gpsdo_capable = (not(_product == B200MINI or _product == B205MINI));
 
