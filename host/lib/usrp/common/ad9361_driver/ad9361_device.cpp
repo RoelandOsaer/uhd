@@ -1862,19 +1862,7 @@ void ad9361_device_t::set_io_iface(ad9361_io::sptr io_iface)
 {
     _io_iface = io_iface;
 }
-    
-    // syncronise baseband clock signal.
-    _io_iface->poke8(0x001,0x01);   //MCS BB Enable
-    sleep(1);
-    _io_iface->poke8(0x001,0x03);   //MCS Digital CLK Enable
-    sleep(1);
-    _io_iface->poke8(0x001,0x07);   //MCS BBPLL Enable
-
-    uint32_t reg1 = _io_iface->peek8(0x001);
-
-    if(reg1 != 0x07){
-        throw uhd::runtime_error("[ad9361_device_t] register 0x001 not set to 0x07");
-    }    
+  
 
 /* This function sets the RX / TX rate between AD9361 and the FPGA, and
  * thus determines the interpolation / decimation required in the FPGA to
